@@ -21,6 +21,7 @@ jobs:
           path: helm-charts
           ref: master
           fetch-depth: 0
+          token: ${{ secrets.REPO_TOKEN }}
 
 #      - name: Configure Git
 #        run: |

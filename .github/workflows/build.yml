@@ -27,3 +27,4 @@ jobs:
       - name: Helm
         run: |
           helm version
+          git version

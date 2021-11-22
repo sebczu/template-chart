@@ -35,4 +35,7 @@ jobs:
         run: |
           helm version
           git version
-          ls
+          ls -a
+          echo "NEXT"
+          cd helm-charts
+          ls -a

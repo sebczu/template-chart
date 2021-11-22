@@ -32,6 +32,8 @@ jobs:
         with:
           version: '3.7.1'
 
+#  git remote set-url origin https://sebczu:${{ secrets.REPO_TOKEN }}@github.com/sebczu/helm-charts.git
+
       - name: Helm
         run: |
           helm version
@@ -42,7 +44,6 @@ jobs:
           touch test.txt
           ls -a
           echo "lets try again"
-#          git remote set-url origin https://sebczu:${{ secrets.REPO_TOKEN }}@github.com/sebczu/helm-charts.git
           git remote add origin https://sebczu:${{ secrets.REPO_TOKEN }}@github.com/sebczu/helm-charts.git
           git config --global user.name 'sebczu'
           git config --global user.email 'sebczu@users.noreply.github.com'

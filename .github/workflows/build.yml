@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v2.4.0
         with:
           repository: sebczu/helm-charts
-#          path: lol
+          path: helm-charts
           ref: master
 
 #      - name: Configure Git
@@ -36,6 +36,6 @@ jobs:
           helm version
           git version
           ls -a
-          echo "NEXT"
+          echo "IN HELM-CHARTS"
           cd helm-charts
           ls -a

@@ -20,6 +20,7 @@ jobs:
           repository: sebczu/helm-charts
           path: helm-charts
           ref: master
+          fetch-depth: 0
 
 #      - name: Configure Git
 #        run: |

@@ -38,4 +38,9 @@ jobs:
           ls -a
           echo "IN HELM-CHARTS"
           cd helm-charts
+          touch test.txt
           ls -a
+          git config --global user.name 'sebczu'
+          git config --global user.email 'sebczu@users.noreply.github.com'
+          git commit -am "test"
+          git push

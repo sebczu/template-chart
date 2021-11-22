@@ -42,5 +42,6 @@ jobs:
           ls -a
           git config --global user.name 'sebczu'
           git config --global user.email 'sebczu@users.noreply.github.com'
-          git commit -am "test"
+          git add .
+          git commit -m "test"
           git push

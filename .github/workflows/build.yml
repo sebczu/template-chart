@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Checkout helm-charts repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.4.0
         with:
           repository: sebczu/helm-charts
           path: lol

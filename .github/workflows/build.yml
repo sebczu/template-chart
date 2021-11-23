@@ -56,6 +56,6 @@ jobs:
           echo "HELM CHARTS"
           ls
           echo "HELM CHARTS"
-      - name: Helm
+      - name: Push Helm package
         run: |
           ls

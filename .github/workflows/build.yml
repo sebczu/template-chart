@@ -49,8 +49,13 @@ jobs:
 #  git commit -m "test"
 #  git push -u origin master
 
-      - name: Helm
+      - name: Create Helm package
         run: |
           helm package service/ --destination helm-charts
           cd helm-charts
-          ls -a
+          echo "HELM CHARTS"
+          ls
+          echo "HELM CHARTS"
+      - name: Helm
+        run: |
+          ls

@@ -29,12 +29,15 @@ jobs:
           version: '3.7.1'
 
       - name: Create Helm package
+        env:
+          REPO_NAME: ${{ github.event.repository.name }}
         run: |
           helm package service/ --destination helm-charts
           cd helm-charts
           echo "HELM CHARTS"
           ls
           echo "HELM CHARTS"
+          echo "REPO: $REPO_NAME"
 
       - name: Recreate Helm repository index
         run: |

@@ -56,6 +56,19 @@ jobs:
           echo "HELM CHARTS"
           ls
           echo "HELM CHARTS"
+
+      - name: Recreate Helm repository index
+        run: |
+          cd helm-charts
+          helm repo index .
+
       - name: Push Helm package
         run: |
-          ls
+          cd helm-charts
+          git remote set-url origin https://sebczu:${{ secrets.REPO_TOKEN }}@github.com/sebczu/helm-charts.git
+          git config --global user.name 'sebczu'
+          git config --global user.email 'dev.sebastian.czubala@gmail.com'
+          git add .
+          git commit -m "Helm chart push"
+          git push -u origin master
+

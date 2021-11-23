@@ -28,6 +28,14 @@ jobs:
         with:
           version: '3.7.1'
 
+      - name: Verify Helm package
+        env:
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
+        run: |
+          CHART_DIRECTORY=$(echo $REPOSITORY_NAME | cut -f1 -d-)
+          echo "CHART_DIRECTORY: $CHART_DIRECTORY"
+          helm lint $CHART_DIRECTORY/
+
       - name: Create Helm package
         env:
           REPOSITORY_NAME: ${{ github.event.repository.name }}

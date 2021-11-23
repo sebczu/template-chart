@@ -23,31 +23,10 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.REPO_TOKEN }}
 
-#      - name: Configure Git
-#        run: |
-#          git config user.name "$GITHUB_ACTOR"
-#          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
       - name: Setup helm
         uses: azure/setup-helm@v1
         with:
           version: '3.7.1'
-
-#  helm version
-#  git version
-#  ls -a
-#  echo "IN HELM-CHARTS"
-#  cd helm-charts
-#  touch test.txt
-#  ls -a
-#  echo "lets try again"
-#  git remote set-url origin https://sebczu:${{ secrets.REPO_TOKEN }}@github.com/sebczu/helm-charts.git
-#  echo "hmm"
-#  git config --global user.name 'sebczu'
-#  git config --global user.email 'dev.sebastian.czubala@gmail.com'
-#  git add .
-#  git commit -m "test"
-#  git push -u origin master
 
       - name: Create Helm package
         run: |

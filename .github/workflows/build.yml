@@ -21,7 +21,7 @@ jobs:
           path: helm-charts
           ref: master
           fetch-depth: 0
-          token: ${{ secrets.REPO_TOKEN }}
+          token: ${{ secrets.CREDENTIAL_GITHUB }}
 
       - name: Setup helm
         uses: azure/setup-helm@v1
@@ -56,7 +56,7 @@ jobs:
       - name: Push Helm package
         run: |
           cd helm-charts
-          git remote set-url origin https://sebczu:${{ secrets.REPO_TOKEN }}@github.com/sebczu/helm-charts.git
+          git remote set-url origin https://sebczu:${{ secrets.CREDENTIAL_GITHUB }}@github.com/sebczu/helm-charts.git
           git config --global user.name 'sebczu'
           git config --global user.email 'dev.sebastian.czubala@gmail.com'
           git add .

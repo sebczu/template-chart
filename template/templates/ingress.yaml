@@ -4,12 +4,12 @@ metadata:
   name: template-ingress
   namespace: {{ .Values.namespace }}
   annotations:
-    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /external/$2
 spec:
   rules:
     - http:
         paths:
-          - path: /api/template/.*
+          - path: /api/template(/|$)(.*)
             pathType: Prefix
             backend:
               service:

@@ -15,5 +15,5 @@ spec:
               service:
                 name: template-service
                 port:
-                  number: 8080
+                  number: 80
 

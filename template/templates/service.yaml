@@ -4,11 +4,20 @@ metadata:
   name: template-service
   namespace: {{ .Values.namespace }}
 spec:
-  type: ClusterIP
-  selector:
-    app: template
-  ports:
-    - protocol: TCP
-      name: service-port
-      port: 8080
-      targetPort: 8080
+#  type: ClusterIP
+#  selector:
+#    app: template
+#  ports:
+#    - protocol: TCP
+#      name: service-port
+#      port: 8080
+#      targetPort: 8080
+  type: NodePort
+    selector:
+      app: template
+    ports:
+      - protocol: TCP
+        name: service-port
+        port: 8080
+        targetPort: 8080
+        nodePort: 30001

@@ -13,11 +13,11 @@ spec:
 #      port: 8080
 #      targetPort: 8080
   type: NodePort
-    selector:
-      app: template
-    ports:
-      - protocol: TCP
-        name: service-port
-        port: 8080
-        targetPort: 8080
-        nodePort: 30001
+  selector:
+    app: template
+  ports:
+    - protocol: TCP
+      name: service-port
+      port: 8080
+      targetPort: 8080
+      nodePort: 30001

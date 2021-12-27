@@ -20,6 +20,11 @@ spec:
           ports:
             - name: service-port
               containerPort: 3306
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              /cloud_sql_proxy -instances=${CLOUD_DB_INSTANCE} -credential_file=/configuration/cloud_sql_service_account.json
           resources:
             requests:
               cpu: "25m"

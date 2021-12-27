@@ -24,7 +24,7 @@ spec:
             - echo "STARTED"
 #            - "/bin/sh"
 #            - "-c"
-            - /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=credential.json
+#            - /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=credential.json
           resources:
             requests:
               cpu: "25m"

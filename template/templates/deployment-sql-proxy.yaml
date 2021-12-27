@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: template-sql-proxy-deployment
+  namespace: {{ .Values.namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: template-sql-proxy
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: template-sql-proxy
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}-sql-proxy
+          image: "{{ .Values.image.sql-proxy.repository }}:{{ .Values.image.sql-proxy.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: service-port
+              containerPort: 3306
+          resources:
+            requests:
+              cpu: "25m"
+              memory: "50Mi"

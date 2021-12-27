@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}-sql-proxy
-          image: "{{ .Values.image.sql-proxy.repository }}:{{ .Values.image.sql-proxy.tag }}"
+          image: "{{ .Values.image.sqlProxy.repository }}:{{ .Values.image.sqlProxy.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: service-port

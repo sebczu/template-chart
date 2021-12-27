@@ -4,6 +4,6 @@ image:
   repository: sebczu/personal
   pullPolicy: Always
   tag: template-0.0.1
-  sql-proxy:
+  sqlProxy:
     repository: gcr.io/cloudsql-docker/gce-proxy
     tag: 1.27.1-alpine

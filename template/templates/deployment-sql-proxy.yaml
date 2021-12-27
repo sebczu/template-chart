@@ -21,10 +21,11 @@ spec:
             - name: service-port
               containerPort: 3306
           command:
-            - "/bin/sh"
-            - "-c"
+#            - "/bin/sh"
+#            - "-c"
             - |
-              /cloud_sql_proxy -instances=${CLOUD_DB_INSTANCE} -credential_file=/configuration/cloud_sql_service_account.json
+              echo "STARTED"
+              /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=credential.json
           resources:
             requests:
               cpu: "25m"

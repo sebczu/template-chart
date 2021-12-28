@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: template-sql-proxy-configmap
-  namespace: {{ .Values.namespace }}
-data:
-  {}

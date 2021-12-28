@@ -20,7 +20,8 @@ spec:
           ports:
             - name: service-port
               containerPort: 3306
-          command:
+          command: ["/bin/sh", "-c"]
+          args:
             - echo "STARTED"
 #            - "/bin/sh"
 #            - "-c"

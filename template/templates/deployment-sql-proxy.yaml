@@ -26,6 +26,8 @@ spec:
             - |
               echo "STARTED"
               echo "GCLOUD_SQL_CONNECTION: $GCLOUD_SQL_CONNECTION"
+              echo $GCLOUD_CREDENTIAL | base64 -d > credential.json
+              /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=/config/gcloud_credential.json
 #          args:
 #            - echo "STARTED";
 #              echo "GCLOUD_SQL_CONNECTION: $GCLOUD_SQL_CONNECTION";
@@ -33,7 +35,17 @@ spec:
           envFrom:
             - configMapRef:
                 name: template-sql-proxy-configmap
+#            - secretRef:
+#                name: template-sql-proxy-secret
+          volumeMounts:
+            - name: template-sql-proxy-secret-volume
+              mountPath: /config/
+#              readOnly: true
           resources:
             requests:
               cpu: "25m"
               memory: "50Mi"
+        volumes:
+          - name: template-sql-proxy-secret-volume
+            secret:
+              secretName: template-sql-proxy-secret

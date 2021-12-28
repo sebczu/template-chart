@@ -9,5 +9,6 @@ image:
     tag: 1.27.1-alpine
 
 gcloud:
+  credential: unknown
   sql:
     connection: unknown

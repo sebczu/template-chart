@@ -4,4 +4,4 @@ metadata:
   name: template-sql-proxy-configmap
   namespace: {{ .Values.namespace }}
 data:
-    GCLOUD_SQL_CONNECTION: "{{ .Values.gcloud.sql.connection }}"
+  GCLOUD_SQL_CONNECTION: "aaa"

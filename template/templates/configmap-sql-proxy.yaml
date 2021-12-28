@@ -4,4 +4,4 @@ metadata:
   name: template-sql-proxy-configmap
   namespace: {{ .Values.namespace }}
 data:
-  GCLOUD_SQL_CONNECTION: "bbb"
+  {}

@@ -30,12 +30,9 @@ spec:
           envFrom:
             - configMapRef:
                 name: template-sql-proxy-configmap
-#            - secretRef:
-#                name: template-sql-proxy-secret
           volumeMounts:
             - name: template-sql-proxy-secret-volume
               mountPath: /config/
-#              readOnly: true
           resources:
             requests:
               cpu: "25m"

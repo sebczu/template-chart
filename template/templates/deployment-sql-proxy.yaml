@@ -22,10 +22,12 @@ spec:
               containerPort: 3306
           command: ["/bin/sh", "-c"]
           args:
-            - echo "STARTED"
-#            - "/bin/sh"
-#            - "-c"
-#            - /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=credential.json
+            - echo "STARTED";
+              echo "GCLOUD_SQL_CONNECTION: $GCLOUD_SQL_CONNECTION";
+              /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=credential.json;
+          envFrom:
+            - configMapRef:
+                name: template-sql-proxy-configmap
           resources:
             requests:
               cpu: "25m"

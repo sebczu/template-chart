@@ -4,4 +4,4 @@ metadata:
   name: template-sql-proxy-configmap
   namespace: {{ .Values.namespace }}
 data:
-  GCLOUD_SQL_CONNECTION: personal-331119:europe-central2:template-sql-database-nkyf
+  GCLOUD_SQL_CONNECTION: {{ .Values.gcloud.sql.connection }}

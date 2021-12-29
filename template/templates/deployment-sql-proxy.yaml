@@ -26,6 +26,7 @@ spec:
             - |
               echo "STARTED"
               echo "GCLOUD_SQL_CONNECTION: $GCLOUD_SQL_CONNECTION"
+              cat /config/gcloud_credential.json
               /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=/config/gcloud_credential.json
           envFrom:
             - configMapRef:

@@ -16,9 +16,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: configmap
+                name: template-configmap
             - secretRef:
-                name: secret
+                name: template-secret
           resources:
             requests:
               cpu: "250m"

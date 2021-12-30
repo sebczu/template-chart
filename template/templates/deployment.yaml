@@ -24,9 +24,9 @@ spec:
               containerPort: 8080
           envFrom:
             - configMapRef:
-                name: configmap
+                name: template-configmap
             - secretRef:
-                name: secret
+                name: template-secret
           resources:
             requests:
               cpu: "300m"

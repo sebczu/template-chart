@@ -1,27 +1,19 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
-  name: template-deployment
+  name: template-sql-updater-job
   namespace: {{ .Values.namespace }}
 spec:
-  selector:
-    matchLabels:
-      app: template
-  replicas: 1
+  backoffLimit: 0
   template:
-    metadata:
-      labels:
-        app: template
     spec:
+      restartPolicy: Never
       imagePullSecrets:
         - name: registry-credential
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.sqlUpdater.repository }}:{{ .Values.image.sqlUpdater.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: service-port
-              containerPort: 8080
           envFrom:
             - configMapRef:
                 name: configmap
@@ -29,5 +21,5 @@ spec:
                 name: secret
           resources:
             requests:
-              cpu: "300m"
-              memory: "500Mi"
+              cpu: "250m"
+              memory: "200Mi"

@@ -12,7 +12,7 @@ spec:
         - name: registry-credential
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.sqlUpdater.repository }}:{{ .Values.image.sqlUpdater.tag }}"
+          image: "{{ .Values.image.sqlUpdater.repository }}:{{ .Values.image.sqlUpdater.tag }}{{ .Values.image.version }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:

@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: template-sql-proxy-service
+  name: {{ .Chart.Name }}-sql-proxy-service
   namespace: {{ .Values.namespace }}
 spec:
   type: ClusterIP
   selector:
-    app: template-sql-proxy
+    app: {{ .Chart.Name }}-sql-proxy
   ports:
     - protocol: TCP
       name: service-port

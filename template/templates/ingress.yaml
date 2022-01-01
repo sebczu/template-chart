@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: template-ingress
+  name: {{ .Chart.Name }}-ingress
   namespace: {{ .Values.namespace }}
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /external/$2
@@ -14,7 +14,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: template-service
+                name: {{ .Chart.Name }}-service
                 port:
                   number: 80
 

@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: template-sql-updater-job
+  name: {{ .Chart.Name }}-sql-updater-job
   namespace: {{ .Values.namespace }}
 spec:
   backoffLimit: 0
@@ -16,9 +16,9 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: template-configmap
+                name: {{ .Chart.Name }}-configmap
             - secretRef:
-                name: template-secret
+                name: {{ .Chart.Name }}-secret
           resources:
             requests:
               cpu: "200m"

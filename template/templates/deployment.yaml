@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: template-deployment
+  name: {{ .Chart.Name }}-deployment
   namespace: {{ .Values.namespace }}
 spec:
   selector:
@@ -17,16 +17,16 @@ spec:
         - name: registry-credential
       containers:
         - name: {{ .Chart.Name }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}{{ .Chart.Version }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: service-port
               containerPort: 8080
           envFrom:
             - configMapRef:
-                name: template-configmap
+                name: {{ .Chart.Name }}-configmap
             - secretRef:
-                name: template-secret
+                name: {{ .Chart.Name }}-secret
           resources:
             requests:
               cpu: "300m"

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: template-sql-proxy-deployment
+  name: {{ .Chart.Name }}-sql-proxy-deployment
   namespace: {{ .Values.namespace }}
 spec:
   selector:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: {{ .Chart.Name }}-sql-proxy
-          image: "{{ .Values.image.sqlProxy.repository }}:{{ .Values.image.sqlProxy.tag }}"
+          image: "{{ .Values.image.sqlProxy.repository }}:{{ .Values.image.sqlProxy.tag }}{{ .Chart.Version }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: service-port
@@ -29,15 +29,15 @@ spec:
               /cloud_sql_proxy -instances=$GCLOUD_SQL_CONNECTION=tcp:0.0.0.0:3306 -credential_file=/config/gcloud_credential.json
           envFrom:
             - configMapRef:
-                name: template-sql-proxy-configmap
+                name: {{ .Chart.Name }}-sql-proxy-configmap
           volumeMounts:
-            - name: template-sql-proxy-secret-volume
+            - name: {{ .Chart.Name }}-sql-proxy-secret-volume
               mountPath: /config/
           resources:
             requests:
               cpu: "25m"
               memory: "50Mi"
       volumes:
-        - name: template-sql-proxy-secret-volume
+        - name: {{ .Chart.Name }}-sql-proxy-secret-volume
           secret:
-            secretName: template-sql-proxy-secret
+            secretName: {{ .Chart.Name }}-sql-proxy-secret

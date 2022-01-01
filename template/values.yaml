@@ -1,6 +1,7 @@
 namespace: template
 
 image:
+  version: 0.0.1
   repository: sebczu/personal
   pullPolicy: Always
   tag: template-
